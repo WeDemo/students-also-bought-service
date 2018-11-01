@@ -13,53 +13,26 @@ class App extends React.Component {
     this.retrieveFromDB = this.retrieveFromDB.bind(this);
   }
 
-  // retrieveFromDB(event) {
-  //   event.preventDefault();
-  //   console.log('this is this.state ', this.state);
-  //   console.log('hello from here in db');
-  
-  //   fetch('http://localhost:3000/input', {
-  //     method: 'GET',
-  //     headers : {
-  //       'content-type': 'application/json'
-  //     },
-  //     body: JSON.stringify(this.state)
-  //   })
-  //   .then(res => res.text())
-  //   .then(response => console.log('Success:', response))
-  // }
-
   componentDidMount() {
     this.retrieveFromDB();
   }
 
   retrieveFromDB() {
-    $.ajax('/input', {
-      success: (courses) => {
-        this.setState({courses});
-      }
+
+    fetch('/input')
+    .then(stream => stream.json())
+    .then((courses) => {
+      console.log(courses);
+      this.setState({ courses: courses });
     })
   }
 
-
-  // retrieveFromDB() {
-  //   const url = 'http://localhost:3000/input';
-
-  //   fetch(url)
-  //   .then(function(resp) {
-  //     // console.log('this is the response ', resp);
-  //     resp.json()
+  //   $.ajax('/input', {
+  //     success: (courses) => {
+  //       this.setState({courses});
+  //     }
   //   })
-  //   .then(function(data) {
-  //     // Create and append the li's to the ul
-  //     // console.log('this is data ', data);
-  //   })
-  //   .catch(function(error) {
-  //     // If there is any error you will catch them here
-  //     console.log(error);
-  //   });   
   // }
-
 
   render() {
     return (

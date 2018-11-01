@@ -1,10 +1,12 @@
 // require express
 var express = require('express');
 var app = express();
+var morgan = require('morgan');
 var db = require('../database/index.js');
 
 
 var bodyParser = require('body-parser');
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 
@@ -20,7 +22,6 @@ app.get('/input', function (req, res) {
       res.status(500).send(err);
     } else {
       res.send(results);
-      // console.log('this is the results of GET request ', results);
     }
   });
 });

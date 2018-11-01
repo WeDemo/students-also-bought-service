@@ -54,6 +54,7 @@ const arrayOfPurchasesForStudents = function(courseId, callback) {
         // console.log('this is the array of course_id objects ', rows);
         results.rows = rows;
         // console.log('this is results ', rows);
+        // console.log({ rows })
         return rows.map(
         function(courseObj) {
           var output = [];
@@ -81,7 +82,7 @@ const arrayOfPurchasesForStudents = function(courseId, callback) {
   })
 }
 
-arrayOfPurchasesForStudents();
+// arrayOfPurchasesForStudents();
 
 
 let inputCourseInfo = function(name, average_rating, regular_price, sales_price, image_url, callback) {
