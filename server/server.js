@@ -16,8 +16,9 @@ app.use(express.static('public'));
 
 
 // GET method route
-app.get('/input', function (req, res) {
-  db.arrayOfPurchasesForStudents(1, (err, results) => {
+app.get('/Courses/:courseId/similarcourses', function (req, res) {
+	console.log(req.params)
+  db.arrayOfPurchasesForStudents(req.params.courseId, (err, results) => {
     if (err) {
       res.status(500).send(err);
     } else {

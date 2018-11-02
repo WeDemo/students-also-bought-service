@@ -1,0 +1,143 @@
+body {
+	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 1.43;
+  color: #29303b;
+}
+
+.similar-courses-component {
+	background-color: transparent;
+  margin-top: 30px;
+  padding: 15px 0;
+}
+
+.course-recommendations {
+	position: relative;
+}
+
+.course-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 15px;
+}
+
+div {
+  display: block;
+}
+
+.similar-course-item-content-container {
+  padding: 15px;
+  position: relative;
+  border-top: none;
+}
+
+.similar-course-image-container {
+	display: inline-block;
+  float: left;
+  height: 70px;
+  overflow: hidden;
+  position: relative;
+  min-width: 100px;
+}
+
+img {
+	left: 50%;
+	max-width: none;
+	position: absolute;
+	transform: translateX(-50%);
+}
+
+.similar-course-item-info-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 70px;
+}
+
+.similar-course-subtitle-container {
+	display: inline-block;
+  margin-left: 15px;
+  width: 85%;
+}
+
+.similar-course-name {
+	font-weight: 700;
+  word-break: break-word;
+}
+
+.similar-course-other-info-container {
+	display: flex;
+  margin-left: 15px;
+  margin-top: 2px;
+  min-height: 40px;
+  width: auto;
+}
+
+.star-icon {
+	color: #f4c150;
+  margin-right: 6px
+}
+
+.udi {
+	font-family: UdemyIcons!important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: -8%;
+}
+
+.udi-small {
+  font-size: 16px;
+}
+
+*, :after, :before {
+	box-sizing: border-box;
+}
+
+.udi-star:before {
+    content: "\F005";
+}
+
+.source-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.similar-course-price-container {
+	display: flex;
+	align-items: flex-end;
+	flex-direction: row-reverse;
+	flex-wrap: wrap;	
+}
+
+.similar-course-sales-price {
+	display: flex;
+	align-items: flex-end;
+	margin-right: 0;
+	white-space: nowrap;
+	font-weight: 600;
+	font-size: 18px;
+	color: #29303b;
+}
+
+.similar-course-reg-price {
+	display: flex;
+	align-items: flex-end;
+	margin-right: 10px;
+	font-size: 13px;
+	font-weight: 400;
+	color: #686f7a;
+}
+
+s, strike, del {
+  text-decoration: line-through;
+}

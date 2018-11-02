@@ -30,11 +30,11 @@ const getStudentsPurchasesByCourseId = function(courseId) {
 // }
 
 const getPurchasesForStudent = function(studentId) {
-  return connection.queryAsync('SELECT Courses.id, Courses.name, Courses.average_rating, Courses.regular_price, Courses.sales_price, Courses.image_url from Purchases INNER JOIN Courses ON Purchases.course_id = Courses.id where student_id = ?', [studentId]);
+  return connection.queryAsync('SELECT Courses.id, Courses.name, Courses.average_rating, Courses.regular_price, Courses.sales_price, Courses.purchase_count, Courses.image_url from Purchases INNER JOIN Courses ON Purchases.course_id = Courses.id where student_id = ?', [studentId]);
 }
 
 const arrayOfPurchasesForStudents = function(courseId, callback) {
-  return getStudentsPurchasesByCourseId(1)
+  return getStudentsPurchasesByCourseId(courseId)
   .then(function(courseId) {
     // console.log('this is courseID', courseId)
     return courseId.map(
@@ -85,10 +85,9 @@ const arrayOfPurchasesForStudents = function(courseId, callback) {
 // arrayOfPurchasesForStudents();
 
 
-let inputCourseInfo = function(name, average_rating, regular_price, sales_price, image_url, callback) {
-
-  var query = 'INSERT into Courses (name, average_rating, regular_price, sales_price, image_url) VALUES (?, ?, ?, ?, ?)';
-  connection.query(query, [name, average_rating, regular_price, sales_price, image_url], function (error, results) {
+let inputCourseInfo = function(name, average_rating, regular_price, sales_price, purchase_count, image_url, callback) {
+  var query = 'INSERT into Courses (name, average_rating, regular_price, sales_price, purchase_count, image_url) VALUES (?, ?, ?, ?, ?, ?)';
+  connection.query(query, [name, average_rating, regular_price, sales_price, purchase_count, image_url], function (error, results) {
     if (error) {
       callback(error, null);
     } else {

@@ -18,8 +18,9 @@ var loadCourseDatatoDB = function() {
     var rand_average_rating = randomNumGenerator(1, 5, 1);
     var rand_regular_price = faker.random.number({min: 50.00, max: 200.00});
     var rand_sales_price = faker.random.number({min: 10.00, max: 20.00});
-    var rand_image_url = photos[randomNumGenerator(0, photos.length, 0)]
-    load.inputCourseInfo(randName, rand_average_rating, rand_regular_price, rand_sales_price, rand_image_url, (error, results) => { console.log(error, results); });
+    var rand_purchase_count = faker.random.number({min: 30, max: 500});
+    var rand_image_url = photos[randomNumGenerator(0, photos.length, 0)];
+    load.inputCourseInfo(randName, rand_average_rating, rand_regular_price, rand_sales_price, rand_purchase_count, rand_image_url, (error, results) => { console.log(error, results); });
   }
 };
 

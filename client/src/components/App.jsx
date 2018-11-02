@@ -8,6 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       courses: [],
+      courseId: 1,
     }
 
     this.retrieveFromDB = this.retrieveFromDB.bind(this);
@@ -18,27 +19,24 @@ class App extends React.Component {
   }
 
   retrieveFromDB() {
+    // console.log('this is the courseId', this.state.courseId)
+    let url = '/Courses/' + this.state.courseId + '/similarcourses'
 
-    fetch('/input')
+    fetch(url)
     .then(stream => stream.json())
     .then((courses) => {
-      console.log(courses);
-      this.setState({ courses: courses });
+      console.log('this is courses', courses);
+      this.setState({ 
+        courses: courses,
+        courseId: courses.id,
+      });
     })
   }
-
-  //   $.ajax('/input', {
-  //     success: (courses) => {
-  //       this.setState({courses});
-  //     }
-  //   })
-  // }
 
   render() {
     return (
       <div>
-        <h1> Similar Courses </h1>
-          <SimilarCourses courses={this.state.courses}/>
+        <SimilarCourses courses={this.state.courses}/>
       </div>
     )
   }
