@@ -1,4 +1,4 @@
-/*div {
+div {
   display: block;
 }
 
@@ -21,7 +21,7 @@ body {
 	position: relative;
 }
 
-.course-title {
+.courseTitle {
   font-size: 22px;
   font-weight: 600;
   margin: 0 0 15px;
@@ -149,4 +149,4 @@ img.purchase-icon-img {
 
 s, strike, del {
   text-decoration: line-through;
-}*/
+}

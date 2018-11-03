@@ -16,11 +16,14 @@ var loadCourseDatatoDB = function() {
   for (var i = 0; i < courses.length; i++) {
     var randName = courses[i];
     var rand_average_rating = randomNumGenerator(1, 5, 1);
-    var rand_regular_price = faker.random.number({min: 50.00, max: 200.00});
-    var rand_sales_price = faker.random.number({min: 10.00, max: 20.00});
+    var rand_regular_price = faker.random.number({min: 50, max: 200});
+    var rand_sales_price = faker.random.number({min: 10, max: 20});
     var rand_purchase_count = faker.random.number({min: 30, max: 500});
+    var rand_lecture_time = randomNumGenerator(5, 30, 1);
+    var rand_update_month = faker.random.number({min: 1, max: 12});
+    var rand_update_year = faker.random.number({min: 2016, max: 2018});
     var rand_image_url = photos[randomNumGenerator(0, photos.length, 0)];
-    load.inputCourseInfo(randName, rand_average_rating, rand_regular_price, rand_sales_price, rand_purchase_count, rand_image_url, (error, results) => { console.log(error, results); });
+    load.inputCourseInfo(randName, rand_average_rating, rand_regular_price, rand_sales_price, rand_purchase_count, rand_lecture_time, rand_update_month, rand_update_year, rand_image_url, (error, results) => { console.log(error, results); });
   }
 };
 

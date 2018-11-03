@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import SimilarCourses from './SimilarCourses.jsx';
+import styles from './styles.css';
 
 
 class App extends React.Component {
@@ -8,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       courses: [],
-      courseId: 1,
+      courseId: 88,
     }
 
     this.retrieveFromDB = this.retrieveFromDB.bind(this);
@@ -25,7 +26,7 @@ class App extends React.Component {
     fetch(url)
     .then(stream => stream.json())
     .then((courses) => {
-      console.log('this is courses', courses);
+      // console.log('this is courses', courses);
       this.setState({ 
         courses: courses,
         courseId: courses.id,
@@ -35,7 +36,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.body} >
         <SimilarCourses courses={this.state.courses}/>
       </div>
     )

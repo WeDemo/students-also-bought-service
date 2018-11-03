@@ -30,7 +30,7 @@ const getStudentsPurchasesByCourseId = function(courseId) {
 // }
 
 const getPurchasesForStudent = function(studentId) {
-  return connection.queryAsync('SELECT Courses.id, Courses.name, Courses.average_rating, Courses.regular_price, Courses.sales_price, Courses.purchase_count, Courses.image_url from Purchases INNER JOIN Courses ON Purchases.course_id = Courses.id where student_id = ?', [studentId]);
+  return connection.queryAsync('SELECT Courses.id, Courses.name, Courses.average_rating, Courses.regular_price, Courses.sales_price, Courses.purchase_count, Courses.lecture_time, Courses.last_update_month, Courses.last_update_year, Courses.image_url from Purchases INNER JOIN Courses ON Purchases.course_id = Courses.id where student_id = ?', [studentId]);
 }
 
 const arrayOfPurchasesForStudents = function(courseId, callback) {
@@ -85,9 +85,9 @@ const arrayOfPurchasesForStudents = function(courseId, callback) {
 // arrayOfPurchasesForStudents();
 
 
-let inputCourseInfo = function(name, average_rating, regular_price, sales_price, purchase_count, image_url, callback) {
-  var query = 'INSERT into Courses (name, average_rating, regular_price, sales_price, purchase_count, image_url) VALUES (?, ?, ?, ?, ?, ?)';
-  connection.query(query, [name, average_rating, regular_price, sales_price, purchase_count, image_url], function (error, results) {
+let inputCourseInfo = function(name, average_rating, regular_price, sales_price, purchase_count, lecture_time, last_update_month, last_update_year, image_url, callback) {
+  var query = 'INSERT into Courses (name, average_rating, regular_price, sales_price, purchase_count, lecture_time, last_update_month, last_update_year, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  connection.query(query, [name, average_rating, regular_price, sales_price, purchase_count, lecture_time, last_update_month, last_update_year, image_url], function (error, results) {
     if (error) {
       callback(error, null);
     } else {
