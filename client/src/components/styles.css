@@ -1,6 +1,6 @@
-div {
+/*div {
   display: block;
-}
+}*/
 
 body {
 	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
@@ -9,14 +9,14 @@ body {
   color: #29303b;
 }
 
-.similar-courses-component {
+.similarCoursesComponent {
 	width: 750px;
 	background-color: transparent;
   margin-top: 30px;
   padding: 15px 0;
 }
 
-.course-recommendations {
+.courseRecommendations {
 	width: 470px;
 	position: relative;
 }
@@ -27,13 +27,13 @@ body {
   margin: 0 0 15px;
 }
 
-.similar-course-item-content-container {
+.similarCourseItemContentContainer {
   padding: 15px;
   position: relative;
   border-top: none;
 }
 
-.similar-course-image-container {
+.similarCourseImageContainer {
   float: left;
   overflow: hidden;
   position: relative;
@@ -45,7 +45,7 @@ body {
   text-align: center;
 }
 
-.lecture-time {
+.lectureTime {
   background-color: hsla(0,0%,100%,.95);
   bottom: 0;
   height: 25px;
@@ -55,39 +55,37 @@ body {
   width: 100%;
 }
 
-
-
-img.course-item-img {
+.courseItemImg {
   left: 50%;
   max-width: none;
   position: absolute;
   transform: translateX(-50%);
 }
 
-.similar-course-item-info-container {
+.similarCourseItemInfoContainer {
   display: flex;
   flex-direction: column;
   min-height: 70px;
 }
 
-.similar-course-subtitle-container {
+.similarCourseSubtitleContainer {
   display: inline-block;
   margin-left: 15px;
   width: 85%;
 }
 
-.similar-course-name {
+.similarCourseName {
 	font-weight: 700;
   word-break: break-word;
 }
 
-.last-update-time {
+.lastUpdateTime {
   color: #686f7a;
   font-size: 13px;
 }
 
 
-.similar-course-other-info-container {
+.similarCourseOtherInfoContainer {
 	display: flex;
   margin-left: 15px;
   margin-top: 2px;
@@ -97,7 +95,46 @@ img.course-item-img {
   align-items: flex-start;
 }
 
-.source-only {
+.similarCourseRating {
+  display: flex;
+  align-items: flex-start;
+}
+
+.starIconImg {
+  width: 35%;
+}
+
+.similarCoursePurchaseCount {
+  display: flex;
+  align-items: flex-start;
+}
+
+.PurchaseIconImg {
+  width: 33%;
+}
+
+.similarCoursePriceContainer {
+	display: flex;
+	justify-content: initial;
+	flex-flow: column;	
+}
+
+.similarCourseSalesPrice {
+	margin-right: 0;
+	white-space: nowrap;
+	font-weight: 600;
+	font-size: 18px;
+	color: #29303b;
+}
+
+.similarCourseRegPrice {
+	margin-right: 10px;
+	font-size: 13px;
+	font-weight: 400;
+	color: #686f7a;
+}
+
+.sourceOnly {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -108,45 +145,6 @@ img.course-item-img {
   border: 0;
 }
 
-.similar-course-rating {
-  display: flex;
-  align-items: flex-start;
-}
-
-img.star-icon-img {
-  width: 35%;
-}
-
-.similar-course-purchase-count {
-  display: flex;
-  align-items: flex-start;
-}
-
-img.purchase-icon-img {
-  width: 33%;
-}
-
-.similar-course-price-container {
-	display: flex;
-	justify-content: initial;
-	flex-flow: column;	
-}
-
-.similar-course-sales-price {
-	margin-right: 0;
-	white-space: nowrap;
-	font-weight: 600;
-	font-size: 18px;
-	color: #29303b;
-}
-
-.similar-course-reg-price {
-	margin-right: 10px;
-	font-size: 13px;
-	font-weight: 400;
-	color: #686f7a;
-}
-
-s, strike, del {
+.s {
   text-decoration: line-through;
 }
