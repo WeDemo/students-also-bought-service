@@ -1,0 +1,152 @@
+/*div {
+  display: block;
+}
+
+body {
+	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 1.43;
+  color: #29303b;
+}
+
+.similar-courses-component {
+	width: 750px;
+	background-color: transparent;
+  margin-top: 30px;
+  padding: 15px 0;
+}
+
+.course-recommendations {
+	width: 470px;
+	position: relative;
+}
+
+.course-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 15px;
+}
+
+.similar-course-item-content-container {
+  padding: 15px;
+  position: relative;
+  border-top: none;
+}
+
+.similar-course-image-container {
+  float: left;
+  overflow: hidden;
+  position: relative;
+  height: 70px;
+  width: 100px;
+  display: flex;
+  justify-content: start;
+  flex-flow: column;
+  text-align: center;
+}
+
+.lecture-time {
+  background-color: hsla(0,0%,100%,.95);
+  bottom: 0;
+  height: 25px;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+
+
+img.course-item-img {
+  left: 50%;
+  max-width: none;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.similar-course-item-info-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 70px;
+}
+
+.similar-course-subtitle-container {
+  display: inline-block;
+  margin-left: 15px;
+  width: 85%;
+}
+
+.similar-course-name {
+	font-weight: 700;
+  word-break: break-word;
+}
+
+.last-update-time {
+  color: #686f7a;
+  font-size: 13px;
+}
+
+
+.similar-course-other-info-container {
+	display: flex;
+  margin-left: 15px;
+  margin-top: 2px;
+  min-height: 40px;
+  width: 325px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.source-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.similar-course-rating {
+  display: flex;
+  align-items: flex-start;
+}
+
+img.star-icon-img {
+  width: 35%;
+}
+
+.similar-course-purchase-count {
+  display: flex;
+  align-items: flex-start;
+}
+
+img.purchase-icon-img {
+  width: 33%;
+}
+
+.similar-course-price-container {
+	display: flex;
+	justify-content: initial;
+	flex-flow: column;	
+}
+
+.similar-course-sales-price {
+	margin-right: 0;
+	white-space: nowrap;
+	font-weight: 600;
+	font-size: 18px;
+	color: #29303b;
+}
+
+.similar-course-reg-price {
+	margin-right: 10px;
+	font-size: 13px;
+	font-weight: 400;
+	color: #686f7a;
+}
+
+s, strike, del {
+  text-decoration: line-through;
+}*/

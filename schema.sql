@@ -9,6 +9,10 @@ CREATE TABLE Courses (
   average_rating DECIMAL(2,1),
   regular_price DECIMAL(10,2),
   sales_price DECIMAL(10,2),
+  purchase_count INT(70),
+  lecture_time DECIMAL(10,1),
+  last_update_month INT(70),
+  last_update_year INT(70),
   image_url VARCHAR(100)
 );
 
