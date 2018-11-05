@@ -41,4 +41,4 @@ app.get('/Courses/:courseId/similarcourses', function (req, res) {
 //   })
 // })
 
-app.listen(3000, () => { console.log('listening on port', 3000); });
+app.listen(3004, () => { console.log('listening on port', 3004); });

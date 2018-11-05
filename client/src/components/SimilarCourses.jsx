@@ -3,7 +3,7 @@ import styles from './styles.css';
 
 // props is object with key list = [{}, ...]
 const SimilarCourses = (props) => (
-	<div className={styles.similarCoursesComponent}>
+	<div id={styles.similarCoursesComp}>
 		<div className={styles.courseRecommendations}>
 			<div className={styles.courseTitle}>Students Also Bought</div>
 		  { props.courses.map(course => (<div key={course.id}>

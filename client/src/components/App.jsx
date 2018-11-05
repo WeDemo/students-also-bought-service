@@ -9,10 +9,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       courses: [],
-      courseId: 88,
+      courseId: 18,
     }
 
     this.retrieveFromDB = this.retrieveFromDB.bind(this);
+    this.handleSeeMoreButtonClick = this.handleSeeMoreButtonClick.bind(this);
+    this.handleSeeLessButtonClick = this.handleSeeLessButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -34,10 +36,24 @@ class App extends React.Component {
     })
   }
 
+  handleSeeMoreButtonClick() {
+    document.getElementById(styles.similarCoursesComp).style.height = 'auto';
+    document.getElementById(styles.viewMoreButton).style.display = 'none';
+    document.getElementById(styles.viewLessButton).style.display = 'inline-block';
+  }
+
+  handleSeeLessButtonClick() {
+    document.getElementById(styles.similarCoursesComp).style.height = '900px';
+    document.getElementById(styles.viewMoreButton).style.display = 'inline-block';
+    document.getElementById(styles.viewLessButton).style.display = 'none';
+  }
+
   render() {
     return (
       <div className={styles.body} >
         <SimilarCourses courses={this.state.courses}/>
+        <button type ="button" id={styles.viewMoreButton} onClick={this.handleSeeMoreButtonClick}>+ See More</button>
+        <button type ="button" id={styles.viewLessButton} onClick={this.handleSeeLessButtonClick}>- See Less</button>
       </div>
     )
   }
