@@ -1,6 +1,7 @@
 // require express
 var express = require('express');
 var app = express();
+var path = require('path');
 var morgan = require('morgan');
 var db = require('../database/index.js');
 
@@ -10,13 +11,22 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 
-// send index.html when a GET request is sent to '/'
-app.use(express.static('public'));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
+// send index.html when a GET request is sent to '/'
+app.use(express.static(path.join(__dirname, '../public')));
+
+app.get('/:courseId', (req, res) => {
+	res.sendFile(path.join(__dirname, '../public/index.html'));
+})
 
 
 // GET method route
-app.get('/Courses/:courseId/similarcourses', function (req, res) {
+app.get('/courses/:courseId/similarcourses', function (req, res) {
 	console.log(req.params)
   db.arrayOfPurchasesForStudents(req.params.courseId, (err, results) => {
     if (err) {

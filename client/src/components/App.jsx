@@ -9,7 +9,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       courses: [],
-      courseId: 18,
     }
 
     this.retrieveFromDB = this.retrieveFromDB.bind(this);
@@ -23,7 +22,8 @@ class App extends React.Component {
 
   retrieveFromDB() {
     // console.log('this is the courseId', this.state.courseId)
-    let url = '/Courses/' + this.state.courseId + '/similarcourses'
+    var courseId = window.location.pathname.slice(1);
+    let url = 'http://localhost:3004/courses/' + courseId + '/similarcourses';
 
     fetch(url)
     .then(stream => stream.json())
@@ -31,7 +31,6 @@ class App extends React.Component {
       // console.log('this is courses', courses);
       this.setState({ 
         courses: courses,
-        courseId: courses.id,
       });
     })
   }
