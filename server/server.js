@@ -17,13 +17,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-// send index.html when a GET request is sent to '/'
 app.use("/courses/:courseId", express.static(path.join(__dirname, '../public')));
-
-// app.get('courses/:courseId', (req, res) => {
-// 	res.sendFile(path.join(__dirname, '../public/index.html'));
-// })
-
 
 // GET method route
 app.get('/courses/:courseId/similarcourses', function (req, res) {
