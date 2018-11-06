@@ -22,10 +22,10 @@ class App extends React.Component {
 
   retrieveFromDB() {
     // console.log('this is the courseId', this.state.courseId)
-    var courseId = window.location.pathname.slice(1);
-    let url = 'http://localhost:3004/courses/' + courseId + '/similarcourses';
+    let courseId = window.location.pathname;
+    // let url = 'http://localhost:3004/courses/' + courseId + '/similarcourses';
 
-    fetch(url)
+    fetch(`${courseId}similarcourses`)
     .then(stream => stream.json())
     .then((courses) => {
       // console.log('this is courses', courses);
