@@ -24,6 +24,7 @@ app.get('/courses/:courseId/similarcourses', function (req, res) {
 	console.log(req.params)
   db.arrayOfPurchasesForStudents(req.params.courseId, (err, results) => {
     if (err) {
+      console.log(err)
       res.status(500).send(err);
     } else {
       res.send(results);
@@ -45,4 +46,4 @@ app.get('/courses/:courseId/similarcourses', function (req, res) {
 //   })
 // })
 
-app.listen(3004, () => { console.log('listening on port', 3004); });
+app.listen(3004, () => { console.log('listening on port', 3004  ); });

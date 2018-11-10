@@ -7,10 +7,10 @@ var _ = require('underscore');
 
 
 connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'udemy_similar_component'
+  host: 'rds-mysql-fec-studentsalsobought.c9exxoe1goym.us-west-1.rds.amazonaws.com',
+  user: 'sharkhouse23',
+  password: 'hackertobe89',
+  database: 'udemy_similar_component',
 });
 
 connection = require('bluebird').promisifyAll(connection);
