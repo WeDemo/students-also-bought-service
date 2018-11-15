@@ -24,7 +24,8 @@
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
-- etc
+- PostgreSQL 10.5
+- MongoDB 4.0.3
 
 ## Development
 
@@ -36,5 +37,22 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+Create the database `neighborhood` by executing this file from the command line by typing:
 
-# students-also-bought-service
+```sh
+mysql -u root < database/schema.sql 
+```
+
+Start the server with:
+```sh
+npm start
+```
+
+Start your application with:
+```sh
+npm run dev
+```
+
+## API
+**For API Documentation, please see the [ENDPOINTS.md](ENDPOINTS.md) file**
+

@@ -1,4 +1,4 @@
-var courses = [
+const courses = [
   'React & Redux for Beginners',
   'Advanced Guide to Bootstrap',
   'Trainwreck: An Introduction to Rails',
@@ -8,7 +8,7 @@ var courses = [
   'FAANG Interview Guide',
   'A Quick Intro to Swift',
   'C# for Dummies',
-  'Secrets of CSS - The Expert\'s Toolkit',
+  "Secrets of CSS - The Expert's Toolkit",
   'Principles of Functional JavaScript Programming',
   'Advanced Data Structures and Algorithms',
   'Take Your JavaScript to the Next Level',
@@ -18,7 +18,7 @@ var courses = [
   'React Front to Back',
   'Angular Front to Back',
   'Learning to Program Pythonically: Beginners and Intermediates',
-  'The Busy Developer\'s Guide to Go',
+  "The Busy Developer's Guide to Go",
   'The Complete jQuery Course: Beginners to Advanced',
   'Artificial Intelligence with Python',
   'Object-oriented Programming in Javascript',
@@ -93,12 +93,12 @@ var courses = [
   'Introduction to Animal Psychology Certificate: Pets Behavior',
   'How to Train a Puppy',
   'Dog CPR, First Aid + Safety for pet pros + dedicated owners',
-  'Dog body language. How To Read Your Dog\'s Body Language',
+  "Dog body language. How To Read Your Dog's Body Language",
   'Old Dog Care: A-Z Tips to take care of your senior dog',
   'How to Crate Train Your Dog/Puppy & Train an Aggressive Dog',
   'Animal Communication - Animals and the Afterlife',
   'Telepathic Animal Healing 101',
-  'Animal Communication For beginners'
+  'Animal Communication For beginners',
 ];
 
 module.exports = courses;

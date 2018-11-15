@@ -1,0 +1,1 @@
+CREATE DATABASE similar_courses

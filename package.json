@@ -8,10 +8,10 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/server.js",
-    "seed": "node database/seed.js",
-    "test": "jest"
+    "start": "nodemon server/index.js",
+    "dev": "webpack -d --watch",
+    "build": "webpack --mode=production",
+    "db:setup": "node database/seed.js"
   },
   "jest": {
     "transform": {
@@ -22,30 +22,52 @@
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     },
     "collectCoverage": true,
-    "coverageReporters": ["json", "html"]
+    "coverageReporters": [
+      "json",
+      "html"
+    ]
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bluebird": "^3.5.2",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
+    "express-http-proxy": "^1.5.0",
     "faker": "^4.1.0",
+    "jquery": "^3.3.1",
+    "knex": "^0.15.2",
     "morgan": "^1.9.1",
     "mysql": "^2.16.0",
+    "pg": "^7.6.1",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "winston": "^3.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.1",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "prettier": "^1.15.2",
+    "prettier-eslint": "^8.8.2",
     "style-loader": "^0.23.1",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2"

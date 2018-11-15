@@ -1,15 +1,15 @@
 import React from 'react';
-import $ from 'jquery';
+// import $ from 'jquery';
+import axios from 'axios';
 import SimilarCourses from './SimilarCourses.jsx';
 import styles from './styles.css';
-
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       courses: [],
-    }
+    };
 
     this.retrieveFromDB = this.retrieveFromDB.bind(this);
     this.handleSeeMoreButtonClick = this.handleSeeMoreButtonClick.bind(this);
@@ -22,17 +22,18 @@ class App extends React.Component {
 
   retrieveFromDB() {
     // console.log('this is the courseId', this.state.courseId)
-    let courseId = window.location.pathname;
+    const courseId = window.location.pathname;
+    console.log('window locationpath', courseId);
     // let url = 'http://localhost:3004/courses/' + courseId + '/similarcourses';
 
-    fetch(`${courseId}similarcourses`)
-    .then(stream => stream.json())
-    .then((courses) => {
-      // console.log('this is courses', courses);
-      this.setState({ 
-        courses: courses,
+    axios(`${courseId}similarcourses`)
+      .then(stream => stream.json())
+      .then((courses) => {
+        // console.log('this is courses', courses);
+        this.setState({
+          courses,
+        });
       });
-    })
   }
 
   handleSeeMoreButtonClick() {
@@ -48,13 +49,18 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
-      <div className={styles.body} >
-        <SimilarCourses courses={this.state.courses}/>
-        <button type ="button" id={styles.viewMoreButton} onClick={this.handleSeeMoreButtonClick}>+ See More</button>
-        <button type ="button" id={styles.viewLessButton} onClick={this.handleSeeLessButtonClick}>- See Less</button>
+      <div className={styles.body}>
+        <SimilarCourses courses={this.state.courses} />
+        <button type="button" id={styles.viewMoreButton} onClick={this.handleSeeMoreButtonClick}>
+          + See More
+        </button>
+        <button type="button" id={styles.viewLessButton} onClick={this.handleSeeLessButtonClick}>
+          - See Less
+        </button>
       </div>
-    )
+    );
   }
 }
 
