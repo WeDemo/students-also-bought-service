@@ -1,0 +1,1 @@
+ngose = require('moongose');

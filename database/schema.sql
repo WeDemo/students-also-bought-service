@@ -22,7 +22,7 @@ CREATE TABLE students
   ( 
      id            INT auto_increment PRIMARY KEY, 
      courses_count INT (70), 
-     reviews_count INT (70) 
+    --  reviews_count INT (70) 
   ); 
 
 CREATE TABLE purchases 

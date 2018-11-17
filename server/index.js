@@ -11,11 +11,7 @@ const db = require('../database/index.js');
 const app = express();
 const port = process.env.PORT || 3005;
 
-
-
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/todo';
-
-
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -24,13 +20,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-
-
 // Postgres Client Setup
 const { Pool } = require('pg');
-const pgClient = new Pool({
-  
-})
+
+const pgClient = new Pool({});
 
 // winston.log('info,', userInput)
 // winston.error('this guy is messing');
@@ -47,6 +40,9 @@ app.get('/courses/:courseId/similarcourses', (req, res) => {
     } else {
       res.send(results);
     }
+
+
+    
   });
 });
 

@@ -24,3 +24,7 @@ coverage
 build/
 dist/
 
+courseData.csv
+
+database/courses.csv
+database/students.csv

@@ -1,4 +1,4 @@
-const photos = [
+const images = [
   'https://s3-us-west-1.amazonaws.com/fecpics/1025026_6746_2.jpg',
   'https://s3-us-west-1.amazonaws.com/fecpics/1104118_7809.jpg',
   'https://s3-us-west-1.amazonaws.com/fecpics/1188176_a4be_2.jpg',
@@ -16,4 +16,4 @@ const photos = [
   'https://s3-us-west-1.amazonaws.com/fecpics/944014_b9e0.jpg',
 ];
 
-module.exports = photos;
+module.exports = images;
