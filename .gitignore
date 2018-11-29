@@ -24,7 +24,9 @@ coverage
 build/
 dist/
 
-courseData.csv
+.env
 
-database/courses.csv
-database/students.csv
+# New Relic 
+newrelic.js
+newrelic_agent.log
+server/newrelic_agent

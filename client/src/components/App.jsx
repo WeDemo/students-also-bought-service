@@ -1,5 +1,4 @@
 import React from 'react';
-// import $ from 'jquery';
 import axios from 'axios';
 import SimilarCourses from './SimilarCourses.jsx';
 import styles from './styles.css';
@@ -11,29 +10,19 @@ class App extends React.Component {
       courses: [],
     };
 
-    this.retrieveFromDB = this.retrieveFromDB.bind(this);
+    // this.retrieveFromDB = this.retrieveFromDB.bind(this);
     this.handleSeeMoreButtonClick = this.handleSeeMoreButtonClick.bind(this);
     this.handleSeeLessButtonClick = this.handleSeeLessButtonClick.bind(this);
   }
 
   componentDidMount() {
-    this.retrieveFromDB();
-  }
+    const id = window.location.pathname.split('/')[2];
 
-  retrieveFromDB() {
-    // console.log('this is the courseId', this.state.courseId)
-    const courseId = window.location.pathname;
-    console.log('window locationpath', courseId);
-    // let url = 'http://localhost:3004/courses/' + courseId + '/similarcourses';
-
-    axios(`${courseId}similarcourses`)
-      .then(stream => stream.json())
-      .then((courses) => {
-        // console.log('this is courses', courses);
-        this.setState({
-          courses,
-        });
+    axios.get(`/courses/${id}/recommendedCourses`).then((courses) => {
+      this.setState({
+        courses: courses.data,
       });
+    });
   }
 
   handleSeeMoreButtonClick() {
@@ -50,9 +39,10 @@ class App extends React.Component {
 
   render() {
     console.log(this.state);
-    return (
+    const { courses } = this.state;
+    return courses.length ? (
       <div className={styles.body}>
-        <SimilarCourses courses={this.state.courses} />
+        <SimilarCourses courses={courses} />
         <button type="button" id={styles.viewMoreButton} onClick={this.handleSeeMoreButtonClick}>
           + See More
         </button>
@@ -60,6 +50,8 @@ class App extends React.Component {
           - See Less
         </button>
       </div>
+    ) : (
+      ''
     );
   }
 }

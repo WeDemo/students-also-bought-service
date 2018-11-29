@@ -1,0 +1,19 @@
+config:
+  target: "http://127.0.0.1:3008"
+  phases:
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 1000
+      name: "Warm up the application"
+    - duration: 120
+      arrivalRate: 1000
+      name: "Sustained max load"
+  processor: "./stressTest.js"
+
+scenarios:
+  - flow:
+      - function: "generateRandomData"
+      - get:
+          url: "/courses/{{ courseId }}/"
+          json:
+            courseId: "{{ courseId }}"
