@@ -2,8 +2,11 @@ const Redis = require('ioredis');
 const db = require('../../database/neo4j/index');
 const log = require('../logger');
 
-const redis = new Redis(6379, 'ec2-52-53-187-75.us-west-1.compute.amazonaws.com');
-
+const redis = new Redis({
+  port: 6379,
+  host: 'ec2-52-53-187-75.us-west-1.compute.amazonaws.com',
+});
+// const redis = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
 const session = db.session();
 
 const queryStu = `

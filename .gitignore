@@ -22,11 +22,5 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
-dist/
-
+client/dist/bundle.js
 .env
-
-# New Relic 
-newrelic.js
-newrelic_agent.log
-server/newrelic_agent
