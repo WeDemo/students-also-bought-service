@@ -1,18 +1,14 @@
-// const db = require('./index');
-const neo4j = require('neo4j-driver').v1;
+const db = require('./index');
 const log = require('../../server/logger');
 
-const db = neo4j.driver(
-  process.env.NEO4J_URI || 'bolt://localhost:7687',
-  neo4j.auth.basic('neo4j', '1234'),
-);
 const session = db.session();
 
-module.exports = function createTables() {
+// module.exports =
+function createTables() {
   const insertStudents = `
   USING PERIODIC COMMIT 
   LOAD CSV WITH HEADERS 
-  FROM "file:///students.csv" 
+  FROM "https://s3-us-west-1.amazonaws.com/sdc-students-also-bought/students.csv" 
   AS row 
   CREATE(s:Student { 
     id: toINT(row.id), 
@@ -24,7 +20,7 @@ module.exports = function createTables() {
   const insertCourses = `
   USING PERIODIC COMMIT 
   LOAD CSV WITH HEADERS 
-  FROM "file:///courses.csv" 
+  FROM "https://s3-us-west-1.amazonaws.com/sdc-students-also-bought/courses.csv" 
   AS row 
   CREATE(c:Course {
     id: toINT(row.id),
@@ -60,15 +56,15 @@ module.exports = function createTables() {
   const insertCategories = `
   USING PERIODIC COMMIT 
   LOAD CSV WITH HEADERS 
-  FROM "file:///categories.csv" 
+  FROM "https://s3-us-west-1.amazonaws.com/sdc-students-also-bought/categories.csv" 
   AS row 
   CREATE(category:Category {
     id: toInt(row.id),
     name: row.category
+  })
   WITH category, row
   MATCH(parent_category: ParentCategory { name: row.parent_category })
   MERGE(category) - [: PARENT_CATEGORY] -> (parent_category)
-  })
   `;
 
   const insertParentCategory = `
@@ -85,7 +81,7 @@ module.exports = function createTables() {
   const insertEnrolledRels = `
   USING PERIODIC COMMIT 
   LOAD CSV WITH HEADERS 
-  FROM "file:///enrollments.csv"
+  FROM "https://s3-us-west-1.amazonaws.com/sdc-students-also-bought/enrollments.csv"
   AS row
   MATCH(c:Course { id: toInt(row.course_id) })
   MATCH(s:Student { id: toInt(row.student_id) })
@@ -93,23 +89,18 @@ module.exports = function createTables() {
   WHERE row.rating <> ""
   MERGE(s) - [r: RATED] -> (c)
   SET r.rating = toFloat(row.rating)
- 
   `;
 
   Promise.all([
     session.run('CREATE INDEX ON :Instructor(name)'),
     session.run('CREATE INDEX ON :Course(courseTitle)'),
-
     session.run('CREATE CONSTRAINT ON (category:Category) ASSERT category.id IS UNIQUE'),
-    session.run('CREATE CONSTRAINT ON (category:Category) ASSERT category.name IS UNIQUE'),
     session.run('CREATE CONSTRAINT ON (i:Instructor) ASSERT i.id IS UNIQUE'),
     session.run(
       'CREATE CONSTRAINT ON (parent_category: ParentCategory) ASSERT parent_category.name IS UNIQUE',
     ),
-
     session.run('CREATE CONSTRAINT ON (s:Student) ASSERT s.id IS UNIQUE'),
     session.run('CREATE CONSTRAINT ON (c:Course) ASSERT c.id IS UNIQUE'),
-
     session.run(insertParentCategory),
     session.run(insertCategories),
     session.run(insertInstructors),
@@ -118,7 +109,7 @@ module.exports = function createTables() {
     session.run(insertEnrolledRels),
   ])
     .then(() => {
-      log.info('Neo4j seeded');
+      log.info('Seeding succeeded');
       session.close();
       db.close();
     })
@@ -126,4 +117,6 @@ module.exports = function createTables() {
       log.error(err);
       session.close();
     });
-};
+}
+
+createTables();

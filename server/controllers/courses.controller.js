@@ -2,20 +2,17 @@ const Redis = require('ioredis');
 const db = require('../../database/neo4j/index');
 const log = require('../logger');
 
-const redis = new Redis({
-  port: 6379,
-  host: 'ec2-52-53-187-75.us-west-1.compute.amazonaws.com',
-});
-// const redis = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
+const redis = new Redis(process.env.REDIS_PORT, process.env.REDIS_HOST);
 const session = db.session();
 
-const queryStu = `
+const getStudent = `
   MATCH (s:Student { id: { courseId } }) 
   RETURN s
 `;
 
 const getCourse = `
-  MATCH (c:Course )
+  MATCH (c:Course {id: { courseId }} 
+  RETURN c;
 `;
 
 const getCoursesWithSameCategory = `
@@ -37,11 +34,6 @@ const queryMostEnrolledCourses = `
   ORDER BY cnt
   DESC LIMIT 10
 `;
-
-// CREATE
-// async function createEnrolledRels(data) {
-//   const result = await session.run();
-// }
 
 // READ
 async function getCourses(data, res) {
@@ -84,6 +76,7 @@ async function getMostEnrolledCourses(req, res, next) {
     return res.status(200).send(req.body);
   }
   const result = await session.run(queryMostEnrolledCourses, courseData);
+  // const result = await session.run(getCourse, courseData);
 
   session.close();
   const courses = [];

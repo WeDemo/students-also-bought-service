@@ -5,13 +5,13 @@ const log = require('../../server/logger');
 const studentsCSV = path.join(__dirname, '../../../students.csv');
 const coursesCSV = path.join(__dirname, '../../../courses.csv');
 const enrollmentsCSV = path.join(__dirname, '../../../enrollments.csv');
-const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/also_bought';
+const connectionString = process.env.DATABASE_URL;
 
 const client = new Client(connectionString);
 client
   .connect()
-  .then(() => console.log('connected'))
-  .catch(err => console.error('connection error', err.stack));
+  .then(() => log.info('connected'))
+  .catch(err => log.error('connection error', err.stack));
 
 client
   .connect()
@@ -46,8 +46,8 @@ CREATE TABLE courses(
 client.query('DROP TABLE IF EXISTS enrollments');
 client.query(`
   CREATE TABLE enrollments(
-  course_id INT NOT NULL ADD FOREIGN KEY(course_id) REFERENCES courses(id),
-  student_id INT ADD FOREIGN KEY(student_id) REFERENCES students(id)
+    course_id INT NOT NULL ADD FOREIGN KEY(course_id) REFERENCES courses(id),
+    student_id INT ADD FOREIGN KEY(student_id) REFERENCES students(id)
   )
 `);
 

@@ -1,9 +1,5 @@
-/*div {
-  display: block;
-}*/
-
 body {
-	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.43;
   color: #29303b;
@@ -12,16 +8,16 @@ body {
 #similarCoursesComp {
   height: 900px;
   overflow: hidden;
-	width: 470px;
-	background-color: transparent;
+  width: 470px;
+  background-color: transparent;
   margin-top: 30px;
   padding: 15px 0;
   padding-left: 50%;
 }
 
 .courseRecommendations {
-	width: 470px;
-	position: relative;
+  width: 470px;
+  position: relative;
 }
 
 .courseTitle {
@@ -37,8 +33,8 @@ body {
   border-bottom: 1px solid #c7ced8;
 }
 
-.similarCourseItemContentContainer:hover { 
-    background-color: #ebedf1;
+.similarCourseItemContentContainer:hover {
+  background-color: #ebedf1;
 }
 
 .similarCourseImageContainer {
@@ -54,7 +50,7 @@ body {
 }
 
 .lectureTime {
-  background-color: hsla(0,0%,100%,.95);
+  background-color: hsla(0, 0%, 100%, 0.95);
   bottom: 0;
   height: 25px;
   left: 0;
@@ -83,7 +79,7 @@ body {
 }
 
 .similarCourseName {
-	font-weight: 700;
+  font-weight: 700;
   word-break: break-word;
 }
 
@@ -93,7 +89,7 @@ body {
 }
 
 .similarCourseOtherInfoContainer {
-	display: flex;
+  display: flex;
   margin-left: 15px;
   margin-top: 2px;
   min-height: 40px;
@@ -121,24 +117,24 @@ body {
 }
 
 .similarCoursePriceContainer {
-	display: flex;
-	justify-content: initial;
-	flex-flow: column;	
+  display: flex;
+  justify-content: initial;
+  flex-flow: column;
 }
 
 .similarCourseSalesPrice {
-	margin-right: 0;
-	white-space: nowrap;
-	font-weight: 600;
-	font-size: 18px;
-	color: #29303b;
+  margin-right: 0;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 18px;
+  color: #29303b;
 }
 
 .similarCourseRegPrice {
-	margin-right: 10px;
-	font-size: 13px;
-	font-weight: 400;
-	color: #686f7a;
+  margin-right: 10px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #686f7a;
 }
 
 .sourceOnly {
@@ -148,7 +144,7 @@ body {
   margin: -1px;
   padding: 0;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 

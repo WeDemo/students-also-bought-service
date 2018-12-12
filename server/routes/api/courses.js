@@ -1,8 +1,7 @@
 const express = require('express');
 const courseController = require('../../controllers/courses.controller');
-// const cache = require('../../cache');
 
-const router = express.Router();
+const router = express.Router({ strict: true });
 
 router.get('/:courseId/recommendedCourses', (req, res) => {
   courseController.getMostEnrolledCourses(req.params, res);
