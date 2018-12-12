@@ -3,7 +3,6 @@ const log = require('../../server/logger');
 
 const session = db.session();
 
-// module.exports =
 function createTables() {
   const insertStudents = `
   USING PERIODIC COMMIT 
