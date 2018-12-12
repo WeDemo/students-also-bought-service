@@ -12,6 +12,8 @@
 
 1. [Requirements](#requirements)
 2. [Development](#development)
+3. [Model](#model)
+4. [API](#api)
 
 ## Requirements
 
@@ -48,8 +50,6 @@ Start your application with:
 ```sh
 npm run dev
 ```
-
-## Database Setup
 
 ## Model
 
