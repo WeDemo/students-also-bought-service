@@ -93,4 +93,4 @@ async function getMostEnrolledCourses(req, res, next) {
   return res.status(400).json('unable to get courses');
 }
 
-module.exports = { getMostEnrolledCourses }; // , createEnrolledRels };
+module.exports = { getMostEnrolledCourses };

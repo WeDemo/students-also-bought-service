@@ -7,7 +7,7 @@ function createTables() {
   const insertStudents = `
   USING PERIODIC COMMIT 
   LOAD CSV WITH HEADERS 
-  FROM "https://s3-us-west-1.amazonaws.com/sdc-students-also-bought/students.csv" 
+  FROM "file:///students.csv" 
   AS row 
   CREATE(s:Student { 
     id: toINT(row.id), 
@@ -19,7 +19,7 @@ function createTables() {
   const insertCourses = `
   USING PERIODIC COMMIT 
   LOAD CSV WITH HEADERS 
-  FROM "https://s3-us-west-1.amazonaws.com/sdc-students-also-bought/courses.csv" 
+  FROM "file:///courses.csv" 
   AS row 
   CREATE(c:Course {
     id: toINT(row.id),
@@ -55,7 +55,7 @@ function createTables() {
   const insertCategories = `
   USING PERIODIC COMMIT 
   LOAD CSV WITH HEADERS 
-  FROM "https://s3-us-west-1.amazonaws.com/sdc-students-also-bought/categories.csv" 
+  FROM "file:///categories.csv" 
   AS row 
   CREATE(category:Category {
     id: toInt(row.id),
@@ -80,7 +80,7 @@ function createTables() {
   const insertEnrolledRels = `
   USING PERIODIC COMMIT 
   LOAD CSV WITH HEADERS 
-  FROM "https://s3-us-west-1.amazonaws.com/sdc-students-also-bought/enrollments.csv"
+  FROM "file:///enrollments.csv"
   AS row
   MATCH(c:Course { id: toInt(row.course_id) })
   MATCH(s:Student { id: toInt(row.student_id) })
