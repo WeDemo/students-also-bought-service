@@ -33,6 +33,12 @@ npm install -g webpack
 npm install
 ```
 
+Create csv files by typing:
+
+```sh
+node database/seed/seed.js
+```
+
 Seed the database by executing this file from the command line by typing:
 
 ```sh
