@@ -26,7 +26,7 @@ const getCourseCategory = `
 `;
 
 const queryMostEnrolledCourses = `
-  MATCH(s: Student) - [: ENROLLED] -> (c: Course { id: { courseId } })
+  MATCH(s: Student) - [:ENROLLED] -> (c: Course { id: { courseId } })
   WITH s
   MATCH(s) - [: ENROLLED] -> (c)
   WHERE NOT(c.id = { courseId })
@@ -34,6 +34,22 @@ const queryMostEnrolledCourses = `
   ORDER BY cnt
   DESC LIMIT 10
 `;
+
+const checkRated = `
+  RETURN EXISTS( (s:Student { id: { courseId }) - [:RATED] -> (c:Course)
+`
+
+// Personalized recommendation based on Category 
+const contentBasedFiltering = `
+  MATCH (s:Student { id: { courseId }) - [:RATED] -> (c:Course)
+  MATCH (c) - [:IN_CATEGORY] -> (category:Category) <- [:IN_CATEGORY] - (rec: Course)
+  WHERE NOT EXISTS ( (s) - [:RATED] -> (rec) )
+  WITH rec, [category.name, COUNT(*)] AS scores 
+  RETURN rec.courseTitle AS recommendation,
+  COLLECT (scores) AS scoreComponents,
+  REDUCE (s=0,x in COLLECT(scores) | s+x[1]) AS score
+  ORDER BY score DESC LIMIT 10;
+`
 
 // READ
 async function getCourses(data, res) {
@@ -46,7 +62,7 @@ async function getCourses(data, res) {
 
   const cachedResponse = await redis.get(`category${categoryData.categoryId}`);
   if (cachedResponse) {
-    log.info(`${categoryData.categoryId}, category id, redis get success`);
+    // log.info(`${categoryData.categoryId}, category id, redis get success`);
     data.body = JSON.parse(cachedResponse);
     return res.status(200).send(data.body);
   }
@@ -65,21 +81,29 @@ async function getCourses(data, res) {
 }
 
 async function getMostEnrolledCourses(req, res, next) {
+  let result; 
   const courseData = {
     courseId: parseInt(req.courseId, 10),
   };
   const cachedResponse = await redis.get(req.courseId);
 
   if (cachedResponse) {
-    log.info(`${req.courseId}, courseId redis get success`);
+    // log.info(`${req.courseId}, courseId redis get success`);
     req.body = JSON.parse(cachedResponse);
     return res.status(200).send(req.body);
   }
-  const result = await session.run(queryMostEnrolledCourses, courseData);
-  // const result = await session.run(getCourse, courseData);
+  const hasRated = await session.run(checkRated, courseData);
+
+  if (hasRated) {
+    result = await session.run(contentBasedFiltering, courseData);
+  } else {
+    result =  await session.run(queryMostEnrolledCourses, courseData);
+  }
 
   session.close();
   const courses = [];
+
+  // If courses do not exist 
   if (!result.records.length) {
     return getCourses(courseData, res);
   }

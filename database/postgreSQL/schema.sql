@@ -24,10 +24,3 @@ CREATE TABLE enrollments (
 
 ALTER TABLE enrollments ADD FOREIGN KEY (course_id) REFERENCES courses(id);
 ALTER TABLE enrollments ADD FOREIGN KEY (student_id) REFERENCES students(id);
-
-
-
-
-
-
-
