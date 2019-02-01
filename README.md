@@ -1,4 +1,4 @@
-# Project Name
+# Wedemy
 
 > Re-engineered back-end of existing web app which sells online courses.
 
